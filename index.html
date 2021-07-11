@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=">Vigity - The 'No Vig Challenge'">
+    <meta name="keywords" content=">Vigity vigorish noVig friendly challenges">
+    <meta name="author" content="Ribity">
+    <meta content-type="text/html">
+
+    <title>Vigity - The 'No Vig Challenge'</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/vigity.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+	<div class="intro-text">
+	  <div class="intro-lead-in">Vigity</div>
+	  <div class="intro-heading">The No-Vig challenge</div>
+	</div>
+      </div>
+    </header>
+
+
+
+
+    <!-- Tributes -->
+	<div class="container">
+	<div class="row text-center">
+	  <div class="col-md-12">
+	    <div class="container" id="serverHtml">Retrieving Data</div>
+	  </div>
+	</div>
+	</div>
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- This should ALWAYS be vigity.js -->
+    <script src="js/vigity.js"></script>
+    <script>
+       console.log("before ajax");
+	 $.getJSON({
+
+	   type : 'POST',
+	   contentType: 'application/json',
+
+	   url :  'https://fqr547px36.execute-api.us-east-1.amazonaws.com/test/myapi/',
+	   crossDomain: true,
+	   dataType: 'json',
+	   data: {},
+	   success : function(data, status) {
+	       document.getElementById("serverHtml").innerHTML = data.html;
+	   },
+	   error : function(request,error)
+	   {
+	       alert("Request: "+JSON.stringify(request));
+	   },
+	   complete: function () {
+		   }
+       });
+       console.log("after ajax");
+    </script>
+    <script>
+const button = document.querySelector("#button");
+const icon = document.querySelector("#button > i");
+const audio = document.querySelector("audio");
+
+button.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.volume = 0.2;
+    audio.play();
+    icon.classList.remove('fa-volume-up');
+    icon.classList.add('fa-volume-mute');
+
+  } else {
+    audio.pause();
+    icon.classList.remove('fa-volume-mute');
+    icon.classList.add('fa-volume-up');
+  }
+  button.classList.add("fade");
+});
+    </script>
+  </body>
+
+</html>
